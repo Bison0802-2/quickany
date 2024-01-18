@@ -31,6 +31,7 @@ export default function Command() {
           key={title}
           title={title}
           subtitle={channels ? channels[title] : ""}
+          icon={{ source: "command-icon.png" }}
           actions={
             <ActionPanel>
               <Action

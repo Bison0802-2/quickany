@@ -2,7 +2,7 @@
   "$schema": "https://www.raycast.com/schemas/extension.json",
   "name": "quick-slack",
   "title": "quick slack",
-  "description": "",
+  "description": "open slack channel quickly.",
   "icon": "command-icon.png",
   "author": "kosuke_umemura",
   "license": "MIT",

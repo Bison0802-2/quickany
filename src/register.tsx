@@ -47,8 +47,9 @@ export default function Command() {
         </ActionPanel>
       }
     >
-      <Form.Description text="Enter the channel information." />
       <Form.TextField title="Title" placeholder="Enter the title" {...itemProps.title} />
+      <Form.Description text="Title don't need to be the same as channnel name. Name it freely!" />
+      <Form.Separator />
       <Form.TextField
         title="Team ID"
         placeholder="Enter the team ID"

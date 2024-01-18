@@ -1,7 +1,7 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
   "name": "quick-slack",
-  "title": "quick slack",
+  "title": "Quick Slack",
   "description": "open slack channel quickly.",
   "icon": "command-icon.png",
   "author": "kosuke_umemura",
@@ -34,7 +34,8 @@
   ],
   "dependencies": {
     "@raycast/api": "^1.65.1",
-    "@raycast/utils": "^1.10.1"
+    "@raycast/utils": "^1.10.1",
+    "@types/fs-extra": "^11.0.4"
   },
   "devDependencies": {
     "@raycast/eslint-config": "^1.0.6",

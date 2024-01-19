@@ -14,8 +14,20 @@ export default function Command() {
   const [searchText, setSearchText] = useState<string | undefined>();
   const [filteredList, filterList] = useState(titleList);
 
+  function isSubsequenseOf(quety: string, target: string) {
+    const queryLower = quety.toLowerCase();
+    const targetLower = target.toLowerCase();
+    let q_i = 0;
+    for (let t_i = 0; t_i < targetLower.length && q_i < queryLower.length; t_i++) {
+      if (queryLower[q_i] === targetLower[t_i]) {
+        q_i++;
+      }
+    }
+    return q_i === queryLower.length;
+  }
+
   useEffect(() => {
-    filterList(titleList.filter((title) => (searchText ? title.includes(searchText) : true)));
+    filterList(titleList.filter((title) => (searchText ? isSubsequenseOf(searchText, title) : true)));
   }, [searchText]);
 
   useEffect(() => {

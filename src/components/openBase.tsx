@@ -1,6 +1,7 @@
 import { Action, ActionPanel, List, LocalStorage, closeMainWindow, confirmAlert } from "@raycast/api";
 import { usePromise } from "@raycast/utils";
 import { exec } from "child_process";
+import { title } from "process";
 import { useEffect, useState } from "react";
 
 type UrlComponents = {
@@ -31,7 +32,7 @@ const OpenBase = ({
   const iconSourcePath = iconPath ? iconPath : "command-icon.png";
   const pageStorage = usePromise(async () => await LocalStorage.allItems<UrlComponents>(), []);
   const pages = pageStorage.data;
-  const [titleList, setTitleList] = useState(pages && appName in Object.keys(pages) ? Object.keys(pages[appName]) : []);
+  const [titleList, setTitleList] = useState(pages ? Object.keys(pages) : []);
   const [searchText, setSearchText] = useState<string | undefined>();
   const [filteredList, filterList] = useState(titleList);
 
@@ -48,10 +49,14 @@ const OpenBase = ({
 
   return (
     <List filtering={false} onSearchTextChange={setSearchText} searchBarPlaceholder="Search Pages">
-      {filteredList.map((title: string) => (
+      {filteredList
+        .filter((title) => title.startsWith(appName))
+        .map((title: string) => {
+        const displayTitle = title.replace(`${appName}/`, "");
+        return (
         <List.Item
           key={title}
-          title={title}
+          title={displayTitle}
           subtitle={pages ? pages[title] : ""}
           icon={{ source: iconSourcePath }}
           actions={
@@ -82,7 +87,7 @@ const OpenBase = ({
             </ActionPanel>
           }
         />
-      ))}
+      )})}
     </List>
   );
 }

@@ -1,5 +1,6 @@
 import { Action, ActionPanel, Form, LocalStorage, Toast, getPreferenceValues, showToast } from "@raycast/api";
 import { FormValidation, useForm } from "@raycast/utils";
+import buildKey from "./lib/buildKey";
 type ChannelInfo = {
   title: string;
   teamId: string;
@@ -13,10 +14,13 @@ type Preference = {
 function make_url(teamId: string, channelId: string) {
   return `slack://channel?team=${teamId}&id=${channelId}`;
 }
+
+function getTitle(title: string) {
+    return LocalStorage.getItem<string>(buildKey("slack", title));
+}
+
 export default function Command() {
-  function getTitle(title: string) {
-    return LocalStorage.getItem<string>(title);
-  }
+  
   const { handleSubmit, itemProps } = useForm<ChannelInfo>({
     async onSubmit(values) {
       if (await getTitle(values.title)) {
@@ -26,7 +30,7 @@ export default function Command() {
         });
         return;
       }
-      LocalStorage.setItem(values.title, make_url(values.teamId, values.channelId));
+      LocalStorage.setItem(buildKey("slack", values.title), make_url(values.teamId, values.channelId));
       showToast({
         style: Toast.Style.Success,
         title: "Channel Registered!",

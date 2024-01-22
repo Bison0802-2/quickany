@@ -1,14 +1,40 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
-  "name": "quick-slack",
-  "title": "Quick Slack",
-  "description": "open slack channel quickly.",
-  "icon": "command-icon.png",
+  "name": "quick-any",
+  "title": "Quick Any",
+  "description": "open any application page quickly.",
+  "icon": "slack-icon.png",
   "author": "kosuke_umemura",
   "license": "MIT",
   "commands": [
     {
-      "name": "register",
+      "name": "notionRegister",
+      "title": "Register Page",
+      "subtitle": "Quick Notion",
+      "description": "Register Notion Page",
+      "mode": "view",
+      "preferences": [
+        {
+          "title": "Default Workspace ID",
+          "name": "workspace",
+          "description": "default workspace ID for registering a page.",
+          "type": "textfield",
+          "defaultValue": "",
+          "required": false
+        }
+      ],
+      "icon": "notion-icon.png"
+    },
+    {
+      "name": "notionOpen",
+      "title": "Open Page",
+      "subtitle": "Quick Notion",
+      "description": "Open Registered Page",
+      "mode": "view",
+      "icon": "notion-icon.png"
+    },
+    {
+      "name": "slackRegister",
       "title": "Register Channel",
       "subtitle": "Quick Slack",
       "description": "Register Slack Channel",
@@ -16,7 +42,7 @@
       "preferences": [
         {
           "title": "Default Team ID",
-          "name": "defaultTeamID",
+          "name": "team",
           "description": "default team ID for registering a channel.",
           "type": "textfield",
           "defaultValue": "",
@@ -25,7 +51,7 @@
       ]
     },
     {
-      "name": "open",
+      "name": "slackOpen",
       "title": "Open Channel",
       "subtitle": "Quick Slack",
       "description": "Open Registered Channel",
@@ -35,7 +61,8 @@
   "dependencies": {
     "@raycast/api": "^1.65.1",
     "@raycast/utils": "^1.10.1",
-    "@types/fs-extra": "^11.0.4"
+    "@types/fs-extra": "^11.0.4",
+    "change-case": "^5.4.2"
   },
   "devDependencies": {
     "@raycast/eslint-config": "^1.0.6",

@@ -9,7 +9,7 @@ Open specified page in any application quickly (via raycast).
 /* example with Notion. */
 
 /* src/xxxOpen.tsx */
-import OpenBase from "./components/OpenBase";
+import OpenBase from "./components/openBase";
 
 export default function Command() {
   return <OpenBase appName="notion" iconPath="notion-icon.png" />;

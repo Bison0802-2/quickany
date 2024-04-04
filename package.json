@@ -5,7 +5,7 @@
   "description": "open any application page quickly.",
   "icon": "slack-icon.png",
   "author": "kosuke_umemura",
-  "owner": "AKARI",
+  "owner": "akari",
   "license": "MIT",
   "commands": [
     {
